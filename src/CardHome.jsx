@@ -12,6 +12,12 @@ export default function CardHome({ selectedPlace }) {
   const getShortWeekDay = (date) =>
     new Intl.DateTimeFormat("en-US", { weekday: "short" }).format(date);
 
+  const getShortDate = (date) =>
+    new Intl.DateTimeFormat("en-US", {
+      day: "2-digit",
+      month: "short",
+    }).format(date);
+
   useEffect(() => {
     const fetchForecast = async (coords) => {
       const apiKey = import.meta.env.VITE_API_WEATHER_KEY;
@@ -112,7 +118,11 @@ export default function CardHome({ selectedPlace }) {
           {forecast.length > 1
             ? forecast.slice(1, 6).map((item, index) => {
                 const dayLabel =
-                  index === 0 ? "Tomorrow" : getShortWeekDay(item.date);
+                  index === 0
+                    ? "Tomorrow"
+                    : `${getShortWeekDay(item.date)}, ${getShortDate(
+                        item.date
+                      )}`;
                 const max = isCelsius ? item.max : convertToF(item.max);
                 const min = isCelsius ? item.min : convertToF(item.min);
                 const unit = isCelsius ? "°C" : "°F";
