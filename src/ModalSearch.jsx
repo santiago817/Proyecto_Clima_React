@@ -23,7 +23,6 @@ export default function ModalSearch({ closeModal, onSelectCity }) {
         }
       );
 
-      
       setSuggestions(response.data.list);
       setError(null);
     } catch (err) {
@@ -76,13 +75,13 @@ export default function ModalSearch({ closeModal, onSelectCity }) {
           className="absolute top-6 right-9 text-white text-3xl"
           onClick={closeModal}
         >
-          <img src="/public/close.svg" alt="Cerrar" className="h-6.5" />
+          <img src="/close.svg" alt="Cerrar" className="h-6.5" />
         </button>
 
         <div className="w-full max-w-md flex items-center gap-10 mt-8 2xl:gap-30">
           <div className="flex items-center w-full border border-white px-3 py-1.5 bg-transparent">
             <img
-              src="/public/search.svg"
+              src="/search.svg"
               alt="Search icon"
               className="w-6 h-6 mr-2"
             />
